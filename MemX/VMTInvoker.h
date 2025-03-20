@@ -1,6 +1,6 @@
 //
 //  VMTInvoker.h
-//  AsuraUME
+//
 //
 //  Created by Euclid Jan Guillermo on 3/12/25.
 //
@@ -33,14 +33,14 @@ public:
 };
 
 template<typename FuncType>
-class VMTInvokerNoAPI : public VMTInvokerBase<FuncType>
+class VMTInvoker : public VMTInvokerBase<FuncType>
 {
 public:
     using VMTInvokerBase<FuncType>::Instance;
     using VMTInvokerBase<FuncType>::FunctionIndex;
     using VMTInvokerBase<FuncType>::OriginalFunction;
 
-    VMTInvokerNoAPI(void* instance, int32_t index) : VMTInvokerBase<FuncType>(instance, index)
+    VMTInvoker(void* instance, int32_t index) : VMTInvokerBase<FuncType>(instance, index)
     {
         void** VTable = *reinterpret_cast<void***>(instance);
         OriginalFunction = reinterpret_cast<FuncType*>(VTable[FunctionIndex]);
