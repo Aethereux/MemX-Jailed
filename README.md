@@ -55,12 +55,12 @@ static void MyControllerHook(UObject* object, UFunction* function, void* params)
 static void HookController() {
     uintptr_t MyController = GetMyController();
     if (!MemX::IsValidPointer(MyController)) return;
-    // MyController is a Class Instance.
+    // MyController is a Class Instance of APlayerController.
     // Swapping
     ControllerHookInstance.Swap(reinterpret_cast<void*>(MyController));
 }
 ```
-Swaps the function at index `0` in the VMT of `SomeClass` with `HookedFunction`, executes the function, and then restores the original function.
+Swaps the function at index `69` in the VMT of `APlayerController` with `HookedFunction`, executes the function, and then restores the original function.
 
 ### Reset Hook
 ```cpp
@@ -87,7 +87,7 @@ void* params = nullptr;
 
 invoker.Invoke(object, function, params);
 ```
-Creates a VMT invoker to call a function at index `5` of `some_instance`.
+Creates a VMT invoker to call a function at index `69` of `some_instance`.
 
 ## Safety Considerations
 - **Pointer Validation:** All memory accesses are validated using `IsValidPointer()` to ensure stability.
