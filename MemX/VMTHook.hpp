@@ -1,3 +1,6 @@
+//
+// Credits to: ZarakiDev
+//
 #pragma once
 
 #include <cstdlib>
